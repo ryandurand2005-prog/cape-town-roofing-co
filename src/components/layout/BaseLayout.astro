@@ -1,0 +1,120 @@
+---
+import { config }   from '@/config';
+import StickyBar    from '@/components/ui/StickyBar.astro';
+import '@/styles/global.css';
+
+const { seo, theme, business, contact } = config;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://yourclientdomain.com').href;
+
+const googleFonts = (() => {
+  const families: string[] = [];
+  const headingMap: Record<string, string> = {
+    Montserrat: 'Montserrat:wght@400;600;700',
+    Poppins:    'Poppins:wght@400;600;700',
+    Raleway:    'Raleway:wght@400;600;700',
+  };
+  const bodyMap: Record<string, string> = {
+    Inter:       'Inter:wght@400;500',
+    Lato:        'Lato:wght@400;700',
+    'Open Sans': 'Open+Sans:wght@400;500',
+  };
+  if (headingMap[theme.fontHeading]) families.push(headingMap[theme.fontHeading]);
+  if (bodyMap[theme.fontBody] && (theme.fontBody as string) !== (theme.fontHeading as string)) families.push(bodyMap[theme.fontBody]);
+  return `https://fonts.googleapis.com/css2?${families.map(f => `family=${f}`).join('&')}&display=swap`;
+})();
+
+const schemaType = business.industry === 'roofing'
+  ? 'HomeAndConstructionBusiness'
+  : business.industry === 'real-estate'
+    ? 'RealEstateAgent'
+    : 'LocalBusiness';
+
+const schema = {
+  '@context':   'https://schema.org',
+  '@type':      schemaType,
+  name:         business.name,
+  description:  seo.description,
+  url:          Astro.site ?? canonicalUrl,
+  telephone:    business.phone,
+  email:        business.email,
+  address: {
+    '@type':          'PostalAddress',
+    streetAddress:    business.address,
+    addressLocality:  business.city,
+    addressRegion:    business.province,
+    postalCode:       business.postalCode,
+    addressCountry:   business.country,
+  },
+  image: seo.ogImage,
+  logo:  business.logo,
+  ...(config.testimonials.items.length >= 3 && {
+    aggregateRating: {
+      '@type':       'AggregateRating',
+      ratingValue:   '5',
+      reviewCount:   String(config.testimonials.items.length),
+    },
+  }),
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalUrl} />
+    <meta property="og:title"       content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:image"       content={seo.ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={googleFonts} />
+
+    <!-- Hero image preload (inserted by pages that need it) -->
+    <slot name="head-preload" />
+
+    <!-- reCAPTCHA (only if site key configured) -->
+    {contact.recaptchaSiteKey && (
+      <script
+        is:inline
+        defer
+        src={`https://www.google.com/recaptcha/api.js?render=${contact.recaptchaSiteKey}`}
+      />
+    )}
+
+    <!-- JSON-LD schema -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <!-- CSS variables from config -->
+    <style define:vars={{
+      'color-primary': theme.primaryColor,
+      'color-accent':  theme.accentColor,
+      'font-heading':  `'${theme.fontHeading}', sans-serif`,
+      'font-body':     `'${theme.fontBody}', sans-serif`,
+    }}>
+      :root {
+        --color-primary: var(--color-primary);
+        --color-accent:  var(--color-accent);
+        --font-heading:  var(--font-heading);
+        --font-body:     var(--font-body);
+      }
+    </style>
+  </head>
+
+  <body>
+    <slot />
+    <StickyBar />
+    <script is:inline src="/scripts/reveal.js" defer></script>
+    <script is:inline src="/scripts/interactions.js" defer></script>
+  </body>
+</html>

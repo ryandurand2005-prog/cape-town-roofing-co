@@ -1,0 +1,178 @@
+---
+/**
+ * terms.astro
+ * ───────────
+ * Terms and Conditions page.
+ * Covers website usage, liability, disclaimers, third-party links,
+ * intellectual property, and governing law (South Africa).
+ * All business-specific details are pulled from config.
+ */
+
+import LegalLayout from '@/components/layout/LegalLayout.astro';
+import { config }  from '@/config';
+
+const { business, legal } = config;
+---
+
+<LegalLayout
+  title="Terms and Conditions"
+  description={`Terms and Conditions for using the ${business.name} website. Please read these terms before using our site.`}
+  lastUpdated={legal.lastUpdated}
+>
+
+  <!-- ── 1. Introduction ─────────────────────────────────────────────────── -->
+  <h2>Introduction</h2>
+  <p>
+    These Terms and Conditions govern your access to and use of the{' '}
+    <strong>{business.name}</strong> website. By accessing or using this website,
+    you agree to be bound by these terms. If you do not agree to these terms,
+    please do not use our website.
+  </p>
+  <p>
+    We may update these terms from time to time. The date shown at the top of
+    this page reflects the most recent update. Continued use of our website
+    after any changes constitutes your acceptance of the updated terms.
+  </p>
+
+
+  <!-- ── 2. Using Our Website ───────────────────────────────────────────── -->
+  <h2>Using Our Website</h2>
+  <p>
+    You may use this website for lawful purposes only and in a manner that does
+    not infringe the rights of any third party. By using this website, you agree
+    that you will not:
+  </p>
+  <ul>
+    <li>Use the website in any way that violates applicable South African law or regulation</li>
+    <li>Use the website to transmit or distribute harmful, offensive, or disruptive content</li>
+    <li>Attempt to gain unauthorised access to any part of the website or its related systems</li>
+    <li>Use any automated tools to scrape, copy, or extract content from this website without our written permission</li>
+    <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity</li>
+  </ul>
+
+
+  <!-- ── 3. Our Services ────────────────────────────────────────────────── -->
+  <h2>Our Services</h2>
+  <p>
+    This website provides information about the services offered by{' '}
+    <strong>{business.name}</strong> and allows you to submit an enquiry. The
+    information on this website is provided for general purposes only.
+  </p>
+  <p>
+    Nothing on this website constitutes a formal quotation, binding offer, or
+    contract. All service agreements are subject to a separate written
+    confirmation or accepted quotation provided directly by{' '}
+    {business.name}.
+  </p>
+
+
+  <!-- ── 4. Accuracy of Information ────────────────────────────────────── -->
+  <h2>Accuracy of Information</h2>
+  <p>
+    We make reasonable efforts to ensure that the information published on this
+    website is accurate and up to date. However, we do not warrant or guarantee
+    that all information is complete, current, or free from errors. Information
+    on this website may change without notice.
+  </p>
+  <p>
+    You should not rely solely on information from this website when making any
+    decision. If you require specific advice or confirmation, please contact us
+    directly.
+  </p>
+
+
+  <!-- ── 5. Limitation of Liability ────────────────────────────────────── -->
+  <h2>Limitation of Liability</h2>
+  <p>
+    To the fullest extent permitted by law, <strong>{business.name}</strong> and
+    its representatives are not liable for any loss or damage — whether direct,
+    indirect, incidental, or consequential — arising from:
+  </p>
+  <ul>
+    <li>Your use of, or inability to access or use, this website</li>
+    <li>Reliance on any information published on this website</li>
+    <li>Any errors, omissions, or inaccuracies in the content of this website</li>
+    <li>Any interruption, suspension, or termination of the website</li>
+    <li>Any unauthorised access to or alteration of your data or communications</li>
+  </ul>
+  <p>
+    This limitation applies regardless of the legal basis of any claim and
+    whether or not we have been advised of the possibility of such loss or damage.
+  </p>
+
+
+  <!-- ── 6. Third-Party Links ───────────────────────────────────────────── -->
+  <h2>Third-Party Links</h2>
+  <p>
+    This website may contain links to third-party websites for your convenience
+    and reference. These links do not constitute an endorsement of, or
+    responsibility for, the content, products, or services offered by those
+    websites.
+  </p>
+  <p>
+    We have no control over the content of any linked website and accept no
+    responsibility for any loss or damage that may arise from your use of them.
+    Accessing any third-party website is entirely at your own risk, and you
+    should review the privacy and terms policies of those websites independently.
+  </p>
+
+
+  <!-- ── 7. Intellectual Property ──────────────────────────────────────── -->
+  <h2>Intellectual Property</h2>
+  <p>
+    All content on this website — including but not limited to text, images,
+    graphics, logos, and the overall design — is the property of{' '}
+    <strong>{business.name}</strong> or its licensors and is protected by
+    applicable copyright and intellectual property laws.
+  </p>
+  <p>
+    You may view and print content from this website for personal, non-commercial
+    use only. You may not reproduce, distribute, modify, publish, or otherwise
+    use any content from this website for commercial purposes without our prior
+    written permission.
+  </p>
+
+
+  <!-- ── 8. Privacy ─────────────────────────────────────────────────────── -->
+  <h2>Privacy</h2>
+  <p>
+    Your use of this website is also subject to our{' '}
+    <a href="/privacy">Privacy Policy</a>, which explains how we collect, use,
+    and protect your personal information. By using this website, you consent to
+    the practices described in our Privacy Policy.
+  </p>
+
+
+  <!-- ── 9. Website Availability ───────────────────────────────────────── -->
+  <h2>Website Availability</h2>
+  <p>
+    We aim to keep this website available at all times, but we do not guarantee
+    uninterrupted access. We reserve the right to suspend, withdraw, or restrict
+    access to all or part of this website for operational or maintenance reasons,
+    without prior notice.
+  </p>
+
+
+  <!-- ── 10. Governing Law ──────────────────────────────────────────────── -->
+  <h2>Governing Law</h2>
+  <p>
+    These Terms and Conditions are governed by and construed in accordance with
+    the laws of the Republic of South Africa. Any disputes arising from or in
+    connection with these terms or your use of this website shall be subject to
+    the exclusive jurisdiction of the South African courts.
+  </p>
+
+
+  <!-- ── 11. Contact Us ────────────────────────────────────────────────── -->
+  <h2>Contact Us</h2>
+  <p>
+    If you have any questions about these Terms and Conditions, please contact us:
+  </p>
+  <div class="highlight-box">
+    <p><strong>{business.name}</strong></p>
+    <p><strong>Email:</strong> <a href={`mailto:${business.email}`}>{business.email}</a></p>
+    <p><strong>Phone:</strong> <a href={`tel:${business.phone}`}>{business.phone}</a></p>
+    <p><strong>Address:</strong> {business.address}</p>
+  </div>
+
+</LegalLayout>

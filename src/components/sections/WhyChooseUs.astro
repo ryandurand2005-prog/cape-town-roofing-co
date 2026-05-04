@@ -1,0 +1,24 @@
+---
+import { config }  from '@/config';
+import WhyPoint    from '@/components/ui/WhyPoint.astro';
+
+const { whyChooseUs } = config;
+---
+
+<section id="why-choose-us" class="py-20 lg:py-28 bg-gray-50" data-reveal>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900">
+        {whyChooseUs.heading}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {whyChooseUs.points.map(point => (
+        <WhyPoint icon={point.icon} text={point.text} />
+      ))}
+    </div>
+
+  </div>
+</section>

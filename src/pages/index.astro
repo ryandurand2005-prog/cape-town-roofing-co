@@ -1,0 +1,27 @@
+---
+import BaseLayout  from '@/components/layout/BaseLayout.astro';
+import Header      from '@/components/layout/Header.astro';
+import Footer      from '@/components/layout/Footer.astro';
+import Hero        from '@/components/sections/Hero.astro';
+import About       from '@/components/sections/About.astro';
+import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
+import Services    from '@/components/sections/Services.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import Contact     from '@/components/sections/Contact.astro';
+import { config }  from '@/config';
+
+const { sections } = config;
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero />
+    {sections.about        && <About />}
+    {sections.whyChooseUs  && <WhyChooseUs />}
+    {sections.services     && <Services />}
+    {sections.testimonials && <Testimonials />}
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

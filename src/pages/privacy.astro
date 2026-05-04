@@ -1,0 +1,251 @@
+---
+/**
+ * privacy.astro
+ * ─────────────
+ * POPIA-compliant Privacy Policy page.
+ * All business-specific content is pulled from config.
+ * The analytics section renders only when config.legal.usesAnalytics is true.
+ */
+
+import LegalLayout from '@/components/layout/LegalLayout.astro';
+import { config }  from '@/config';
+
+const { business, legal } = config;
+---
+
+<LegalLayout
+  title="Privacy Policy"
+  description={`Privacy Policy for ${business.name}. Learn how we collect, use, and protect your personal information in accordance with POPIA.`}
+  lastUpdated={legal.lastUpdated}
+>
+
+  <!-- ── 1. Introduction ─────────────────────────────────────────────────── -->
+  <h2>Introduction</h2>
+  <p>
+    This Privacy Policy explains how <strong>{business.name}</strong> collects,
+    uses, and protects personal information submitted through our website. We are
+    committed to handling your information responsibly and in accordance with the
+    Protection of Personal Information Act 4 of 2013 (<strong>POPIA</strong>).
+  </p>
+  <p>
+    By using our website or submitting an enquiry, you acknowledge that you have
+    read and understood this policy.
+  </p>
+
+
+  <!-- ── 2. Who We Are ──────────────────────────────────────────────────── -->
+  <h2>Who We Are</h2>
+  <p>
+    <strong>{business.name}</strong> is the responsible party for personal
+    information collected through this website. If you have any questions about
+    how we handle your information, please contact us:
+  </p>
+  <div class="highlight-box">
+    <p><strong>Email:</strong> <a href={`mailto:${business.email}`}>{business.email}</a></p>
+    <p><strong>Phone:</strong> <a href={`tel:${business.phone}`}>{business.phone}</a></p>
+    <p><strong>Address:</strong> {business.address}</p>
+  </div>
+
+
+  <!-- ── 3. What Information We Collect ────────────────────────────────── -->
+  <h2>What Information We Collect</h2>
+  <p>
+    We collect personal information only when you voluntarily submit an enquiry
+    through our contact form. This may include:
+  </p>
+  <ul>
+    <li>Your name</li>
+    <li>Your phone number</li>
+    <li>Your email address</li>
+    <li>A message describing your enquiry or the service you are interested in</li>
+  </ul>
+  <p>
+    We do not collect sensitive personal information as defined by POPIA. We do
+    not collect any information from visitors who do not submit an enquiry, other
+    than the basic technical data processed automatically by our website hosting
+    provider (see Third-Party Services below).
+  </p>
+
+
+  <!-- ── 4. Why We Collect It ───────────────────────────────────────────── -->
+  <h2>Why We Collect Your Information</h2>
+  <p>We collect and process your personal information for the following purposes:</p>
+  <ul>
+    <li>To respond to your enquiry and discuss our services with you</li>
+    <li>To contact you by phone or email as requested</li>
+    <li>To keep a record of our communications with you</li>
+    <li>To send you a confirmation that your enquiry was received</li>
+    <li>To send one follow-up message if we have not yet connected with you</li>
+  </ul>
+  <p>
+    We do not use your information for unsolicited marketing, and we do not add
+    you to mailing lists without your explicit consent.
+  </p>
+
+
+  <!-- ── 5. How We Store and Protect It ────────────────────────────────── -->
+  <h2>How We Store and Protect Your Information</h2>
+  <p>
+    Your information is stored securely using reputable third-party services
+    listed in the section below. We take reasonable technical and organisational
+    measures to protect your personal information from unauthorised access, loss,
+    disclosure, or misuse.
+  </p>
+  <p>
+    We do not sell, rent, trade, or otherwise disclose your personal information
+    to any third party for their own purposes.
+  </p>
+
+
+  <!-- ── 6. How Long We Keep It ────────────────────────────────────────── -->
+  <h2>How Long We Keep Your Information</h2>
+  <p>
+    We retain your enquiry information for as long as is reasonably necessary to
+    manage our business relationship with you — typically up to three years from
+    the date of your last contact with us. After this period, your information is
+    securely deleted.
+  </p>
+  <p>
+    You may request deletion of your information at any time (see Your Rights
+    below).
+  </p>
+
+
+  <!-- ── 7. Third-Party Services ───────────────────────────────────────── -->
+  <h2>Third-Party Services</h2>
+  <p>
+    To operate our website and respond to your enquiry, we use the following
+    third-party services. Each service processes information under its own
+    privacy policy, which we encourage you to review.
+  </p>
+
+  <h3>Google reCAPTCHA</h3>
+  <p>
+    Our contact form is protected by Google reCAPTCHA to prevent automated spam
+    submissions. reCAPTCHA may process your IP address, browser information, and
+    interaction patterns. This data is processed by Google under their privacy
+    policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.
+  </p>
+
+  <h3>Form Processing Service</h3>
+  <p>
+    When you submit an enquiry, your information is processed by an automation
+    service that delivers your message to us and logs it in a secure record. This
+    service acts as a data processor on our behalf and does not use your
+    information for its own purposes.
+  </p>
+
+  <h3>Email Delivery Service</h3>
+  <p>
+    We use a third-party email delivery service to send you a confirmation when
+    you submit an enquiry, and to deliver our response to your email address. This
+    service processes your email address solely to deliver these messages.
+  </p>
+
+  <h3>Website Hosting Provider</h3>
+  <p>
+    Our website is hosted on a cloud platform that processes basic server log
+    data — such as IP addresses and page requests — as part of normal website
+    operations. This data is used only for security and performance purposes and
+    is not linked to any form submission you make.
+  </p>
+
+  {legal.usesAnalytics && (
+    <>
+      <h3>{legal.analyticsProvider}</h3>
+      <p>
+        We use {legal.analyticsProvider} to collect information about how
+        visitors use our website. See the Analytics and Tracking section below
+        for more detail.
+      </p>
+    </>
+  )}
+
+
+  <!-- ── 8. Analytics (conditional) ───────────────────────────────────── -->
+  {legal.usesAnalytics && (
+    <>
+      <h2>Analytics and Tracking</h2>
+      <p>
+        We use <strong>{legal.analyticsProvider}</strong> to collect information
+        about how visitors use our website. This helps us understand which pages
+        are most useful and how we can improve the experience for visitors.
+      </p>
+      <p>
+        The types of information collected by this service may include:
+      </p>
+      <ul>
+        <li>Pages visited and time spent on each page</li>
+        <li>General geographic location based on IP address</li>
+        <li>Device type, browser, and screen size</li>
+        <li>How you arrived at our website (e.g. search engine, direct link)</li>
+      </ul>
+      <p>
+        This information is used solely to improve our website and services. It
+        is not used to identify you as an individual. {legal.analyticsProvider} may
+        process this data under their own privacy policy. You can limit analytics
+        tracking by adjusting your browser settings or using a browser extension
+        that blocks tracking scripts.
+      </p>
+    </>
+  )}
+
+
+  <!-- ── 9. Your Rights ────────────────────────────────────────────────── -->
+  <h2>Your Rights Under POPIA</h2>
+  <p>
+    The Protection of Personal Information Act gives you the following rights in
+    relation to your personal information:
+  </p>
+  <ul>
+    <li><strong>Right to access:</strong> You may request a copy of the personal information we hold about you.</li>
+    <li><strong>Right to correction:</strong> You may ask us to correct any information that is inaccurate or outdated.</li>
+    <li><strong>Right to deletion:</strong> You may request that we delete your personal information, subject to any legal obligations that require us to retain it.</li>
+    <li><strong>Right to object:</strong> You may object to the processing of your personal information in certain circumstances.</li>
+    <li><strong>Right to lodge a complaint:</strong> If you are not satisfied with how we handle your information, you may lodge a complaint with the Information Regulator of South Africa.</li>
+  </ul>
+  <p>
+    To exercise any of these rights, contact us at{' '}
+    <a href={`mailto:${business.email}`}>{business.email}</a>.
+    We will respond to your request within a reasonable time.
+  </p>
+
+
+  <!-- ── 10. Information Regulator ─────────────────────────────────────── -->
+  <h2>Information Regulator of South Africa</h2>
+  <p>
+    If you are not satisfied with our response to any complaint or concern
+    about the handling of your personal information, you may contact the
+    Information Regulator of South Africa:
+  </p>
+  <div class="highlight-box">
+    <p><strong>Website:</strong> <a href="https://www.inforegulator.org.za" target="_blank" rel="noopener noreferrer">www.inforegulator.org.za</a></p>
+    <p><strong>Email:</strong> <a href="mailto:inforeg@justice.gov.za">inforeg@justice.gov.za</a></p>
+  </div>
+
+
+  <!-- ── 11. Changes to This Policy ────────────────────────────────────── -->
+  <h2>Changes to This Policy</h2>
+  <p>
+    We may update this Privacy Policy from time to time to reflect changes in
+    our practices or legal obligations. The date at the top of this page shows
+    when the policy was last updated. We encourage you to review this page
+    periodically. Continued use of our website after any changes constitutes
+    your acceptance of the updated policy.
+  </p>
+
+
+  <!-- ── 12. Contact Us ────────────────────────────────────────────────── -->
+  <h2>Contact Us</h2>
+  <p>
+    If you have any questions or concerns about this Privacy Policy or how we
+    handle your personal information, please contact us:
+  </p>
+  <div class="highlight-box">
+    <p><strong>{business.name}</strong></p>
+    <p><strong>Email:</strong> <a href={`mailto:${business.email}`}>{business.email}</a></p>
+    <p><strong>Phone:</strong> <a href={`tel:${business.phone}`}>{business.phone}</a></p>
+    <p><strong>Address:</strong> {business.address}</p>
+  </div>
+
+</LegalLayout>

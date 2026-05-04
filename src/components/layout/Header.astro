@@ -1,0 +1,112 @@
+---
+import { config } from '@/config';
+
+const { business, sections } = config;
+
+const navLinks = [
+  { label: 'Home',        href: '#hero' },
+  ...(sections.about       ? [{ label: 'About',      href: '#about' }]       : []),
+  ...(sections.services    ? [{ label: 'Services',   href: '#services' }]    : []),
+  ...(sections.testimonials? [{ label: 'Reviews',    href: '#testimonials' }]: []),
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-250">
+  <!-- Transparent on load; .scrolled class added by JS in Phase 7 -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo / business name -->
+      <a href="#hero" class="flex items-center gap-3 shrink-0">
+        <img
+          src={business.logo}
+          alt={business.logoAlt}
+          width="40"
+          height="40"
+          class="h-10 w-auto"
+          onerror="this.style.display='none'"
+        />
+        <span
+          id="header-business-name"
+          class="font-heading font-bold text-lg text-white transition-colors duration-250"
+        >
+          {business.name}
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class="nav-link text-sm font-medium text-white/90 hover:text-white transition-colors duration-150"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop phone CTA -->
+      <a
+        href={`tel:${business.phone.replace(/\s/g, '')}`}
+        class="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm text-white transition-colors duration-150"
+        style="background-color: var(--color-accent);"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.07h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.93 5.93l1.2-1.2a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        {business.phone}
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        class="lg:hidden p-2 text-white"
+      >
+        <!-- Hamburger icon -->
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6"  x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <!-- Close icon (hidden by default) -->
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <div
+    id="mobile-nav"
+    class="lg:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out bg-white shadow-lg"
+  >
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class="mobile-nav-link block py-3 px-4 rounded-lg text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={`tel:${business.phone.replace(/\s/g, '')}`}
+        class="mt-2 flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-semibold text-white"
+        style="background-color: var(--color-accent);"
+      >
+        Call {business.phone}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- 1px sentinel for sticky header trigger -->
+<div id="header-sentinel" class="h-px w-full absolute top-0 pointer-events-none"></div>

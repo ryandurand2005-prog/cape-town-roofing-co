@@ -1,0 +1,32 @@
+---
+import { config }   from '@/config';
+import ServiceCard  from '@/components/ui/ServiceCard.astro';
+
+const { services } = config;
+---
+
+<section id="services" class="py-20 lg:py-28 bg-white" data-reveal>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900">
+        {services.heading}
+      </h2>
+    </div>
+
+    {services.layout === 'list' ? (
+      <div class="space-y-4 max-w-3xl mx-auto">
+        {services.items.map(item => (
+          <ServiceCard icon={item.icon} name={item.name} description={item.description} layout="list" />
+        ))}
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.items.map(item => (
+          <ServiceCard icon={item.icon} name={item.name} description={item.description} layout="grid" />
+        ))}
+      </div>
+    )}
+
+  </div>
+</section>

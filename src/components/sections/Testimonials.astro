@@ -1,0 +1,42 @@
+---
+import { config }       from '@/config';
+import TestimonialCard  from '@/components/ui/TestimonialCard.astro';
+
+const { testimonials } = config;
+---
+
+<section id="testimonials" class="py-20 lg:py-28" style="background-color: var(--color-primary);" data-reveal>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <h2 class="font-heading font-bold text-3xl lg:text-4xl text-white">
+        {testimonials.heading}
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {testimonials.items.map(item => (
+        <TestimonialCard
+          name={item.name}
+          location={item.location}
+          text={item.text}
+          rating={item.rating}
+        />
+      ))}
+    </div>
+
+    {testimonials.reviewsUrl && (
+      <div class="text-center mt-10">
+        <a
+          href={testimonials.reviewsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm underline transition-colors"
+        >
+          Read all our Google Reviews →
+        </a>
+      </div>
+    )}
+
+  </div>
+</section>

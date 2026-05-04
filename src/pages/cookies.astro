@@ -1,0 +1,215 @@
+---
+/**
+ * cookies.astro
+ * ─────────────
+ * Cookie Notice page.
+ * Covers essential cookies, conditional analytics cookies,
+ * third-party cookies (reCAPTCHA), and browser management instructions.
+ * The analytics section renders only when config.legal.usesAnalytics is true.
+ */
+
+import LegalLayout from '@/components/layout/LegalLayout.astro';
+import { config }  from '@/config';
+
+const { business, legal } = config;
+---
+
+<LegalLayout
+  title="Cookie Notice"
+  description={`Cookie Notice for ${business.name}. Learn what cookies we use and how to manage them.`}
+  lastUpdated={legal.lastUpdated}
+>
+
+  <!-- ── 1. What Are Cookies ────────────────────────────────────────────── -->
+  <h2>What Are Cookies</h2>
+  <p>
+    Cookies are small text files that are stored on your device (computer,
+    tablet, or phone) when you visit a website. They are widely used to make
+    websites work correctly and to provide website owners with basic information
+    about how their sites are being used.
+  </p>
+  <p>
+    Cookies do not give us access to your device and cannot be used to run
+    programs or deliver viruses to your computer.
+  </p>
+
+
+  <!-- ── 2. How We Use Cookies ─────────────────────────────────────────── -->
+  <h2>How We Use Cookies</h2>
+  <p>
+    <strong>{business.name}</strong> uses cookies to:
+  </p>
+  <ul>
+    <li>Ensure our website and contact form function correctly</li>
+    <li>Protect our contact form from automated spam submissions</li>
+    {legal.usesAnalytics && (
+      <li>Understand how visitors use our website so we can improve it</li>
+    )}
+  </ul>
+  <p>
+    We do not use cookies to identify you personally, and we do not use cookies
+    to serve you targeted advertising.
+  </p>
+
+
+  <!-- ── 3. Types of Cookies We Use ────────────────────────────────────── -->
+  <h2>Types of Cookies We Use</h2>
+
+
+  <!-- Essential Cookies — always present -->
+  <h3>Essential Cookies</h3>
+  <p>
+    These cookies are necessary for our website to function correctly. They
+    cannot be disabled without affecting how the website works.
+  </p>
+
+  <div class="highlight-box">
+    <p><strong>Cookie name:</strong> Google reCAPTCHA cookies (<code>_GRECAPTCHA</code>)</p>
+    <p><strong>Provider:</strong> Google LLC</p>
+    <p>
+      <strong>Purpose:</strong> reCAPTCHA is used to protect our contact form
+      from automated spam submissions. It analyses your device and browsing
+      behaviour to determine whether you are a real person or a bot.
+    </p>
+    <p>
+      <strong>Duration:</strong> Up to 6 months
+    </p>
+    <p>
+      <strong>More information:</strong>{' '}
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+        Google Privacy Policy
+      </a>
+    </p>
+  </div>
+
+
+  <!-- Analytics Cookies — conditional -->
+  {legal.usesAnalytics && (
+    <>
+      <h3>Analytics Cookies</h3>
+      <p>
+        We use <strong>{legal.analyticsProvider}</strong> to collect information
+        about how visitors use our website. These cookies help us understand which
+        pages are visited most often and how we can improve the experience for
+        our visitors.
+      </p>
+      <p>
+        The information collected by these cookies is general and statistical in
+        nature. It is not used to identify individual visitors. Examples include
+        the number of pages visited, how long visitors spend on the site, and
+        what type of device was used.
+      </p>
+      <div class="highlight-box">
+        <p><strong>Provider:</strong> {legal.analyticsProvider}</p>
+        <p>
+          <strong>Purpose:</strong> Website usage analytics — understanding visitor
+          behaviour to improve our website.
+        </p>
+        <p>
+          <strong>Data collected:</strong> Pages visited, time on site, general
+          location (country/region), device type, browser type.
+        </p>
+        <p>
+          <strong>How to opt out:</strong> You can disable analytics cookies using
+          your browser settings. See the Managing Cookies section below.
+        </p>
+      </div>
+    </>
+  )}
+
+
+  <!-- Third-Party Cookies -->
+  <h3>Third-Party Cookies</h3>
+  <p>
+    Some features of our website rely on services provided by third parties,
+    which may set their own cookies on your device. We do not control these
+    cookies or how the data collected by them is used. We encourage you to
+    review the relevant third-party privacy policies for more information.
+  </p>
+  <p>
+    Third-party services used on this website that may set cookies include:
+  </p>
+  <ul>
+    <li>
+      <strong>Google reCAPTCHA</strong> — see Essential Cookies above.{' '}
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+        Google Privacy Policy
+      </a>
+    </li>
+    {legal.usesAnalytics && (
+      <li>
+        <strong>{legal.analyticsProvider}</strong> — see Analytics Cookies above.
+      </li>
+    )}
+    {config.contact.showMap && (
+      <li>
+        <strong>Google Maps</strong> — If you view the embedded map on our
+        contact page, Google Maps may set cookies related to the map display.{' '}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          Google Privacy Policy
+        </a>
+      </li>
+    )}
+  </ul>
+
+
+  <!-- ── 4. Managing Your Cookies ──────────────────────────────────────── -->
+  <h2>Managing Your Cookies</h2>
+  <p>
+    You can control and delete cookies through your browser settings. Most
+    browsers allow you to block or delete cookies, or notify you when a cookie
+    is being set. Instructions for common browsers are linked below:
+  </p>
+  <ul>
+    <li>
+      <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">
+        Google Chrome
+      </a>
+    </li>
+    <li>
+      <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" rel="noopener noreferrer">
+        Mozilla Firefox
+      </a>
+    </li>
+    <li>
+      <a href="https://support.apple.com/en-gb/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">
+        Apple Safari
+      </a>
+    </li>
+    <li>
+      <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">
+        Microsoft Edge
+      </a>
+    </li>
+  </ul>
+  <p>
+    Please be aware that disabling essential cookies may affect the functionality
+    of this website. In particular, our contact form may not work correctly if
+    reCAPTCHA cookies are blocked.
+  </p>
+
+
+  <!-- ── 5. Changes to This Notice ─────────────────────────────────────── -->
+  <h2>Changes to This Cookie Notice</h2>
+  <p>
+    We may update this Cookie Notice from time to time to reflect changes in the
+    cookies we use or changes in applicable law. The date at the top of this page
+    shows when this notice was last updated. We encourage you to review this page
+    periodically.
+  </p>
+
+
+  <!-- ── 6. Contact Us ────────────────────────────────────────────────── -->
+  <h2>Contact Us</h2>
+  <p>
+    If you have any questions about our use of cookies or this Cookie Notice,
+    please contact us:
+  </p>
+  <div class="highlight-box">
+    <p><strong>{business.name}</strong></p>
+    <p><strong>Email:</strong> <a href={`mailto:${business.email}`}>{business.email}</a></p>
+    <p><strong>Phone:</strong> <a href={`tel:${business.phone}`}>{business.phone}</a></p>
+    <p><strong>Address:</strong> {business.address}</p>
+  </div>
+
+</LegalLayout>
