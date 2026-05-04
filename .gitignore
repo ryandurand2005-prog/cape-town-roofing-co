@@ -1,6 +1,7 @@
 # Build output
 dist/
 .astro/
+.vercel
 
 # Environment — NEVER commit this
 .env
