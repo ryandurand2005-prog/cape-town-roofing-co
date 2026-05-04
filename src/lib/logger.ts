@@ -14,7 +14,7 @@ interface LogEntry {
 export function log(entry: Omit<LogEntry, 'timestamp' | 'clientName'>): void {
   const record: LogEntry = {
     ...entry,
-    clientName: import.meta.env.CLIENT_NAME ?? 'unknown',
+    clientName: process.env.CLIENT_NAME ?? 'unknown',
     timestamp:  new Date().toISOString(),
   };
   console.log(JSON.stringify(record));

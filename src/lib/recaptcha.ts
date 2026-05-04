@@ -7,7 +7,7 @@ export interface RecaptchaResult {
 }
 
 export async function verifyRecaptcha(token: string): Promise<RecaptchaResult> {
-  const secretKey = import.meta.env.RECAPTCHA_SECRET_KEY;
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!secretKey || secretKey === 'test_key_placeholder') {
     // Fail-open in development when no real key is configured

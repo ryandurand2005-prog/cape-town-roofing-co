@@ -6,7 +6,7 @@ export interface NotifyPayload extends SanitisedPayload {
 }
 
 export async function sendToN8n(payload: NotifyPayload): Promise<boolean> {
-  const webhookUrl = import.meta.env.N8N_WEBHOOK_URL;
+  const webhookUrl = process.env.N8N_WEBHOOK_URL;
 
   if (!webhookUrl || webhookUrl.includes('placeholder')) {
     console.warn('[notify] N8N_WEBHOOK_URL not configured — skipping n8n');
@@ -28,10 +28,10 @@ export async function sendToN8n(payload: NotifyPayload): Promise<boolean> {
 }
 
 export async function sendFallbackEmail(payload: NotifyPayload): Promise<boolean> {
-  const apiKey         = import.meta.env.RESEND_API_KEY;
-  const clientEmail    = import.meta.env.CLIENT_NOTIFY_EMAIL;
-  const backupEmail    = import.meta.env.BACKUP_NOTIFY_EMAIL;
-  const clientName     = import.meta.env.CLIENT_NAME ?? 'Client';
+  const apiKey         = process.env.RESEND_API_KEY;
+  const clientEmail    = process.env.CLIENT_NOTIFY_EMAIL;
+  const backupEmail    = process.env.BACKUP_NOTIFY_EMAIL;
+  const clientName     = process.env.CLIENT_NAME ?? 'Client';
 
   if (!apiKey || apiKey.includes('placeholder')) {
     console.warn('[notify] RESEND_API_KEY not configured — skipping fallback email');
