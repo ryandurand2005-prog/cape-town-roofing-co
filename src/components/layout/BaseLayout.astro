@@ -80,7 +80,14 @@ const schema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href={googleFonts} />
 
-    <!-- Hero image preload (inserted by pages that need it) -->
+    <!-- Hero image preload -->
+    <link
+      rel="preload"
+      as="image"
+      href={config.hero.image}
+      imagesrcset={`${config.hero.image.replace('.webp','-400.webp')} 400w, ${config.hero.image.replace('.webp','-800.webp')} 800w, ${config.hero.image.replace('.webp','-1200.webp')} 1200w, ${config.hero.image} 1920w`}
+      imagesizes="100vw"
+    />
     <slot name="head-preload" />
 
     <!-- reCAPTCHA (only if site key configured) -->
