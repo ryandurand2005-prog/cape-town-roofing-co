@@ -36,7 +36,7 @@ export const clientOverrides: DeepPartial<ClientConfig> = {
   theme: {
     primaryColor: '#1f3a5f',    // deep navy
     accentColor:  '#e8500a',    // burnt orange
-    fontHeading:  'Montserrat',
+    fontHeading:  'Lexend',
     fontBody:     'Inter',
   },
 
