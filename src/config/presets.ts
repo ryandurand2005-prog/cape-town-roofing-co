@@ -21,7 +21,7 @@ export const industryPresets: Record<Industry, DeepPartial<ClientConfig>> = {
   roofing: {
     hero: {
       headline:    'Cape Town\'s Trusted Roofing Specialists',
-      subheadline: 'Quality roofing installations, repairs, and waterproofing — done right the first time.',
+      subheadline: 'Quality roofing installations, repairs, and waterproofing - done right the first time.',
       ctaText:     'Get a Free Roof Quote',
       subtext:     'Free inspection · No obligation',
     },
@@ -29,7 +29,7 @@ export const industryPresets: Record<Industry, DeepPartial<ClientConfig>> = {
       heading: 'Why Choose Us for Your Roof',
       points: [
         { icon: 'shield-check', text: 'Fully licensed roofing contractor with comprehensive insurance cover.' },
-        { icon: 'clock',        text: 'Fast response — emergency repairs attended to within 24 hours.' },
+        { icon: 'clock',        text: 'Fast response - emergency repairs attended to within 24 hours.' },
         { icon: 'star',         text: '5-star rated by over 200 Cape Town homeowners and businesses.' },
         { icon: 'hammer',       text: '10-year workmanship guarantee on all new roof installations.' },
       ],
@@ -39,7 +39,7 @@ export const industryPresets: Record<Industry, DeepPartial<ClientConfig>> = {
       layout:  'grid',
       items: [
         { icon: 'home',         name: 'Roof Installations',  description: 'New roof installations for residential and commercial properties, using quality IBR, Chromadek, and tile.' },
-        { icon: 'wrench',       name: 'Roof Repairs',        description: 'Leak detection and repairs for all roof types — fast, reliable, and guaranteed.' },
+        { icon: 'wrench',       name: 'Roof Repairs',        description: 'Leak detection and repairs for all roof types - fast, reliable, and guaranteed.' },
         { icon: 'droplets',     name: 'Waterproofing',       description: 'Flat roof and parapet wall waterproofing to keep your property dry, year after year.' },
         { icon: 'layers',       name: 'Fascia & Gutters',    description: 'Supply and installation of fascia boards, gutters, and downpipes with professional finish.' },
       ],
@@ -68,7 +68,7 @@ export const industryPresets: Record<Industry, DeepPartial<ClientConfig>> = {
       points: [
         { icon: 'award',        text: 'Award-winning agency with over R500M in successful transactions.' },
         { icon: 'map-pin',      text: "Specialists in Cape Town's most sought-after neighbourhoods." },
-        { icon: 'users',        text: 'A dedicated agent for every client — not a revolving door.' },
+        { icon: 'users',        text: 'A dedicated agent for every client - not a revolving door.' },
         { icon: 'trending-up',  text: 'Market-leading pricing strategies to maximise your property value.' },
       ],
     },

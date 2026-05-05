@@ -64,9 +64,9 @@ export const defaultConfig: ClientConfig = {
     heading: 'Why Choose Us',
     points: [
       { icon: 'shield-check', text: 'Fully licensed and insured for your peace of mind.' },
-      { icon: 'clock',        text: 'Fast turnaround — most jobs completed within 48 hours.' },
+      { icon: 'clock',        text: 'Fast turnaround - most jobs completed within 48 hours.' },
       { icon: 'star',         text: 'Rated 5 stars by over 100 satisfied customers.' },
-      { icon: 'phone',        text: 'Available 7 days a week — call us anytime.' },
+      { icon: 'phone',        text: 'Available 7 days a week - call us anytime.' },
     ],
   },
 
