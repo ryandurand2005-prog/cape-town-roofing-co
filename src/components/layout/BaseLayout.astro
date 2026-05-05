@@ -121,6 +121,16 @@ const schema = {
   <body>
     <slot />
     <StickyBar />
+
+    <!-- Floating Get Free Quote button (desktop) -->
+    <a
+      href="#contact"
+      class="hidden lg:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-5 py-3 rounded-full text-white text-sm font-semibold shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+      style="background-color: var(--color-primary);"
+      aria-label="Get a free quote"
+    >
+      Get Free Quote
+    </a>
     <script is:inline src="/scripts/reveal.js" defer></script>
     <script is:inline src="/scripts/interactions.js" defer></script>
   </body>
