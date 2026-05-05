@@ -8,6 +8,7 @@ import WhyChooseUs from '@/components/sections/WhyChooseUs.astro';
 import Services    from '@/components/sections/Services.astro';
 import Testimonials from '@/components/sections/Testimonials.astro';
 import Contact     from '@/components/sections/Contact.astro';
+import StatsBar    from '@/components/sections/StatsBar.astro';
 import { config }  from '@/config';
 
 const { sections } = config;
@@ -17,6 +18,7 @@ const { sections } = config;
   <Header />
   <main>
     <Hero />
+    <StatsBar />
     {sections.about        && <About />}
     {sections.whyChooseUs  && <WhyChooseUs />}
     {sections.services     && <Services />}
