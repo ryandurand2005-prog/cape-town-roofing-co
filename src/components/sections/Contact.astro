@@ -34,7 +34,7 @@ const requiredFields = ['name', 'email', 'message'];
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
 
       <!-- Form column (3/5 on desktop) -->
-      <div class="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+      <div class="lg:col-span-3 bg-white rounded-2xl shadow-md border border-gray-200 p-8">
 
         <!-- Success state (hidden by default) -->
         <div id="form-success" class="hidden text-center py-8">
@@ -111,7 +111,7 @@ const requiredFields = ['name', 'email', 'message'];
       <div class="lg:col-span-2 space-y-6">
 
         <!-- Phone CTA (prominent on mobile) -->
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-md p-6">
           <p class="text-sm text-gray-500 mb-1">Prefer to call?</p>
           <a
             href={`tel:${business.phone.replace(/\s/g,'')}`}
@@ -138,7 +138,7 @@ const requiredFields = ['name', 'email', 'message'];
 
         <!-- Google Maps embed (optional) -->
         {contact.showMap && contact.mapEmbedUrl && (
-          <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm aspect-video">
+          <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-md aspect-video">
             <iframe
               src={contact.mapEmbedUrl}
               width="100%"
