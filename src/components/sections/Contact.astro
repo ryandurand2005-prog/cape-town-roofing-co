@@ -1,6 +1,7 @@
 ---
 import { config }   from '@/config';
 import FormInput    from '@/components/ui/FormInput.astro';
+import Icon         from '@/components/ui/Icon.astro';
 
 const { contact, business } = config;
 
@@ -38,7 +39,9 @@ const requiredFields = ['name', 'email', 'message'];
 
         <!-- Success state (hidden by default) -->
         <div id="form-success" class="hidden text-center py-8">
-          <div class="text-5xl mb-4">✅</div>
+          <div class="flex justify-center mb-4">
+            <Icon name="check-circle" size={56} style="color: var(--color-accent);" />
+          </div>
           <h3 class="font-heading font-bold text-xl text-gray-900 mb-2">Thank you, we'll be in touch!</h3>
           <p class="text-gray-500 mb-6">We've received your message and will respond within 24 hours.</p>
           <p class="text-sm text-gray-400">Need to speak with someone now?</p>
@@ -47,15 +50,17 @@ const requiredFields = ['name', 'email', 'message'];
             class="inline-flex items-center gap-2 mt-3 px-6 py-3 rounded-lg font-semibold text-white text-sm"
             style="background-color: var(--color-accent);"
           >
-            📞 Call {business.phone}
+            <Icon name="phone" size={16} />
+            Call {business.phone}
           </a>
         </div>
 
         <!-- General error banner (hidden by default) -->
         <div id="form-error-banner" class="hidden mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700" role="alert">
           <p id="form-error-text">We couldn't send your message. Please try again or call us directly.</p>
-          <a href={`tel:${business.phone.replace(/\s/g,'')}`} class="font-semibold underline mt-1 block">
-            📞 Call {business.phone}
+          <a href={`tel:${business.phone.replace(/\s/g,'')}`} class="inline-flex items-center gap-1 font-semibold underline mt-1">
+            <Icon name="phone" size={14} />
+            Call {business.phone}
           </a>
         </div>
 
@@ -118,7 +123,7 @@ const requiredFields = ['name', 'email', 'message'];
             class="flex items-center gap-3 font-heading font-bold text-xl hover:opacity-80 transition-opacity"
             style="color: var(--color-primary);"
           >
-            <span class="text-2xl">📞</span>
+            <Icon name="phone" size={22} style="color: var(--color-primary);" />
             {business.phone}
           </a>
           <p class="text-xs text-gray-400 mt-2">Available Monday–Friday, 8am–5pm</p>
