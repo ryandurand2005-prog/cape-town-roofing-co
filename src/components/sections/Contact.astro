@@ -2,6 +2,7 @@
 import { config }   from '@/config';
 import FormInput    from '@/components/ui/FormInput.astro';
 import Icon         from '@/components/ui/Icon.astro';
+import Icon         from '@/components/ui/Icon.astro';
 
 const { contact, business } = config;
 
@@ -133,11 +134,17 @@ const requiredFields = ['name', 'phone', 'email', 'service'];
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4 text-sm">
           <div>
             <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Email</p>
-            <a href={`mailto:${business.email}`} class="text-gray-700 hover:underline">{business.email}</a>
+            <a href={`mailto:${business.email}`} class="flex items-center gap-2 text-gray-700 hover:underline">
+              <Icon name="mail" size={15} style="color: var(--color-accent); flex-shrink: 0;" />
+              {business.email}
+            </a>
           </div>
           <div>
             <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Address</p>
-            <p class="text-gray-700">{business.address}, {business.city}, {business.postalCode}</p>
+            <p class="flex items-start gap-2 text-gray-700">
+              <Icon name="map-pin" size={15} style="color: var(--color-accent); flex-shrink: 0; margin-top: 1px;" />
+              {business.address}, {business.city}, {business.postalCode}
+            </p>
           </div>
         </div>
 
