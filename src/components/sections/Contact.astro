@@ -1,6 +1,7 @@
 ---
 import { config }   from '@/config';
 import FormInput    from '@/components/ui/FormInput.astro';
+import Icon         from '@/components/ui/Icon.astro';
 
 const { contact, business } = config;
 
@@ -23,22 +24,24 @@ const fieldPlaceholders: Record<string, string> = {
 const requiredFields = ['name', 'email', 'message'];
 ---
 
-<section id="contact" class="py-20 lg:py-28" style="background-color: #ebe7e0;">
+<section id="contact" class="py-20 lg:py-28" style="background-color: #cdc7bc;">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center mb-12">
       <h2 class="font-heading font-bold text-3xl lg:text-4xl text-gray-900 mb-3">{contact.heading}</h2>
-      <p class="text-gray-500 text-lg max-w-xl mx-auto">{contact.subheading}</p>
+      <p class="text-gray-700 text-lg max-w-xl mx-auto">{contact.subheading}</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-start">
 
       <!-- Form column (3/5 on desktop) -->
-      <div class="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+      <div class="lg:col-span-3 bg-white rounded-2xl shadow-md border border-gray-200 p-8">
 
         <!-- Success state (hidden by default) -->
         <div id="form-success" class="hidden text-center py-8">
-          <div class="text-5xl mb-4">✅</div>
+          <div class="flex justify-center mb-4">
+            <Icon name="check-circle" size={56} style="color: var(--color-accent);" />
+          </div>
           <h3 class="font-heading font-bold text-xl text-gray-900 mb-2">Thank you, we'll be in touch!</h3>
           <p class="text-gray-500 mb-6">We've received your message and will respond within 24 hours.</p>
           <p class="text-sm text-gray-400">Need to speak with someone now?</p>
@@ -47,15 +50,17 @@ const requiredFields = ['name', 'email', 'message'];
             class="inline-flex items-center gap-2 mt-3 px-6 py-3 rounded-lg font-semibold text-white text-sm"
             style="background-color: var(--color-accent);"
           >
-            📞 Call {business.phone}
+            <Icon name="phone" size={16} />
+            Call {business.phone}
           </a>
         </div>
 
         <!-- General error banner (hidden by default) -->
         <div id="form-error-banner" class="hidden mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700" role="alert">
           <p id="form-error-text">We couldn't send your message. Please try again or call us directly.</p>
-          <a href={`tel:${business.phone.replace(/\s/g,'')}`} class="font-semibold underline mt-1 block">
-            📞 Call {business.phone}
+          <a href={`tel:${business.phone.replace(/\s/g,'')}`} class="inline-flex items-center gap-1 font-semibold underline mt-1">
+            <Icon name="phone" size={14} />
+            Call {business.phone}
           </a>
         </div>
 
@@ -83,7 +88,7 @@ const requiredFields = ['name', 'email', 'message'];
           <!-- reCAPTCHA attribution (badge hidden via CSS) -->
           {contact.recaptchaSiteKey && (
             <p class="mt-4 text-xs text-gray-400">
-              Protected by reCAPTCHA — <a href="https://policies.google.com/privacy" class="underline">Privacy</a> &amp; <a href="https://policies.google.com/terms" class="underline">Terms</a> apply.
+              Protected by reCAPTCHA - <a href="https://policies.google.com/privacy" class="underline">Privacy</a> &amp; <a href="https://policies.google.com/terms" class="underline">Terms</a> apply.
             </p>
           )}
 
@@ -111,17 +116,17 @@ const requiredFields = ['name', 'email', 'message'];
       <div class="lg:col-span-2 space-y-6">
 
         <!-- Phone CTA (prominent on mobile) -->
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-md p-6">
           <p class="text-sm text-gray-500 mb-1">Prefer to call?</p>
           <a
             href={`tel:${business.phone.replace(/\s/g,'')}`}
             class="flex items-center gap-3 font-heading font-bold text-xl hover:opacity-80 transition-opacity"
             style="color: var(--color-primary);"
           >
-            <span class="text-2xl">📞</span>
+            <Icon name="phone" size={22} style="color: var(--color-primary);" />
             {business.phone}
           </a>
-          <p class="text-xs text-gray-400 mt-2">Available Monday–Friday, 8am–5pm</p>
+          <p class="text-xs text-gray-500 mt-2">Available Monday-Friday, 8am-5pm</p>
         </div>
 
         <!-- Address + email -->
@@ -138,7 +143,7 @@ const requiredFields = ['name', 'email', 'message'];
 
         <!-- Google Maps embed (optional) -->
         {contact.showMap && contact.mapEmbedUrl && (
-          <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm aspect-video">
+          <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-md aspect-video">
             <iframe
               src={contact.mapEmbedUrl}
               width="100%"

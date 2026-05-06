@@ -1,0 +1,29 @@
+---
+// Stats are hardcoded here for now — easy to move into client.config.ts per client later
+const stats = [
+  { value: '500+',  label: 'Roofs Installed'      },
+  { value: '10',    label: 'Years in Cape Town'    },
+  { value: '24hr',  label: 'Emergency Response'    },
+  { value: '200+',  label: 'Happy Homeowners'      },
+];
+---
+
+<div class="py-5 lg:py-7" style="background-color: var(--color-primary);">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 lg:gap-0 lg:divide-x lg:divide-white/20">
+      {stats.map(stat => (
+        <div class="text-center lg:px-8">
+          <p
+            class="font-heading font-bold text-3xl lg:text-4xl mb-1"
+            style="color: var(--color-accent);"
+          >
+            {stat.value}
+          </p>
+          <p class="text-white/80 text-sm font-medium tracking-wide">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

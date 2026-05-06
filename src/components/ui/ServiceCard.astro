@@ -10,10 +10,10 @@ interface Props {
 }
 const { icon, name, description, layout = 'grid', href } = Astro.props;
 
-const baseListClass  = "flex items-start gap-5 p-6 rounded-xl border bg-white transition-all duration-200";
-const baseGridClass  = "p-6 rounded-xl border bg-white transition-all duration-200 flex flex-col items-start";
-const staticStyle    = "border-gray-100 hover:shadow-md";
-const linkStyle      = "border-gray-100 hover:shadow-md hover:border-[var(--color-accent)] cursor-pointer group";
+const baseListClass  = "flex items-start gap-5 p-6 rounded-xl border bg-gray-50 transition-all duration-200";
+const baseGridClass  = "p-6 rounded-xl border bg-gray-50 transition-all duration-200 flex flex-col items-start";
+const staticStyle    = "border-gray-200 shadow-sm hover:shadow-md";
+const linkStyle      = "border-gray-200 shadow-sm hover:shadow-md hover:border-[var(--color-accent)] cursor-pointer group";
 ---
 
 {layout === 'list' ? (

@@ -36,20 +36,20 @@ export const clientOverrides: DeepPartial<ClientConfig> = {
   theme: {
     primaryColor: '#1f3a5f',    // deep navy
     accentColor:  '#e8500a',    // burnt orange
-    fontHeading:  'Montserrat',
+    fontHeading:  'Lexend',
     fontBody:     'Inter',
   },
 
   seo: {
     title:         'Cape Town Roofing Co. | Roofing Specialists in Cape Town',
-    description:   'Licensed roofing contractors serving Cape Town since 2008. Installations, repairs, and waterproofing. Free quotes — call +27 21 555 0100.',
+    description:   'Licensed roofing contractors serving Cape Town since 2008. Installations, repairs, and waterproofing. Free quotes - call +27 21 555 0100.',
     ogImage:       '/images/og-image.jpg',
     googleReviews: '',           // add Google Reviews URL when available
   },
 
   hero: {
     headline:    'Cape Town\'s Trusted Roofing Specialists',
-    subheadline: 'Quality roof installations, repairs, and waterproofing — done right the first time, guaranteed.',
+    subheadline: 'Quality roof installations, repairs, and waterproofing - done right the first time, guaranteed.',
     ctaText:     'Get a Free Roof Quote',
     ctaHref:     '#contact',
     image:       '/images/hero.webp',
