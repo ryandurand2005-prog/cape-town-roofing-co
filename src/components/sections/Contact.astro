@@ -157,6 +157,48 @@ const requiredFields = ['name', 'email', 'message'];
   </div>
 </section>
 
+<script is:inline>
+// Auto-fill "Service Required" from ?service= URL param when navigating from a service card
+(function () {
+  function findBestMatch(param, selectEl) {
+    const options = Array.from(selectEl.options).map(o => o.value).filter(Boolean);
+    const p = param.toLowerCase().trim();
+
+    // 1. Exact match (case-insensitive)
+    const exact = options.find(o => o.toLowerCase() === p);
+    if (exact) return exact;
+
+    // 2. Word-overlap scoring
+    const pWords = p.split(/\W+/).filter(Boolean);
+    let best = null, bestScore = 0;
+    for (const opt of options) {
+      const oWords = opt.toLowerCase().split(/\W+/).filter(Boolean);
+      const shared = pWords.filter(w => oWords.some(o => o.includes(w) || w.includes(o)));
+      const score = shared.length / Math.max(pWords.length, oWords.length);
+      if (score > bestScore) { bestScore = score; best = opt; }
+    }
+    return bestScore >= 0.4 ? best : null;
+  }
+
+  function prefillService() {
+    const param = new URLSearchParams(window.location.search).get('service');
+    if (!param) return;
+
+    const select = document.getElementById('service');
+    if (!select) return;
+
+    const match = findBestMatch(param, select);
+    if (match) select.value = match;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', prefillService);
+  } else {
+    prefillService();
+  }
+})();
+</script>
+
 <script is:inline define:vars={{ siteKey: contact.recaptchaSiteKey }}>
 (function () {
   const form       = document.getElementById('contact-form');

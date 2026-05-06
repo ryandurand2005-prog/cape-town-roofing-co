@@ -17,13 +17,25 @@ const { services } = config;
     {services.layout === 'list' ? (
       <div class="space-y-4 max-w-3xl mx-auto">
         {services.items.map(item => (
-          <ServiceCard icon={item.icon} name={item.name} description={item.description} layout="list" />
+          <ServiceCard
+            icon={item.icon}
+            name={item.name}
+            description={item.description}
+            layout="list"
+            href={`/?service=${encodeURIComponent(item.name)}#contact`}
+          />
         ))}
       </div>
     ) : (
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {services.items.map(item => (
-          <ServiceCard icon={item.icon} name={item.name} description={item.description} layout="grid" />
+          <ServiceCard
+            icon={item.icon}
+            name={item.name}
+            description={item.description}
+            layout="grid"
+            href={`/?service=${encodeURIComponent(item.name)}#contact`}
+          />
         ))}
       </div>
     )}
